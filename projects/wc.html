@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Welcome Card with Registration Modal</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+
+      <div id="welcomeCard" class="container mt-5">
+            <div class="card">
+                  <div class="card-body">
+                    <h5> WELCOME CARD</h5>
+                  <h1 class="card-title">Welcome to my Website!</h1>
+                  <h6 class="card-subtitle mb-2 text-muted">Register user here!</h6>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">Register</button>
+                  </div>
+</div>
+            </div>
+      </div>
+
+
+      <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                        <div class="modal-header">
+                              <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                              </button>
+                        </div>
+                        <div class="modal-body">
+
+                              <form id="registrationForm">
+                                    <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                    <small class="text-danger d-none" id="nameWarning">Please enter your name.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="section">Section:</label>
+                                        <input type="text" class="form-control" id="section" required>
+                                        <small class="text-danger d-none" id="sectionWarning">Please enter your section.</small>
+                                    </div>
+                              </form>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" onclick="saveChanges()">Save Changes</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+
+      <div id="successCard" class="container mt-5 d-none">
+            <div class="card">
+                  <div class="card-body">
+                  <h1 class="card-title">Welcome Card</h1>
+                <div class="card-body text-center">
+                  <p class="card-text" id="successMessage1"></p>
+                  <h2 class="card-text" id="successMessage"></h2>
+                  </div>
+</div>
+            </div>
+      </div>      
+
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+<script>
+  function validateForm() {
+    const name = document.getElementById('name').value;
+    const section = document.getElementById('section').value;
+
+    if (!name || !section) {
+      if (!name) {
+        document.getElementById('nameWarning').classList.remove('d-none');
+      } else {
+        document.getElementById('nameWarning').classList.add('d-none');
+      }
+
+      if (!section) {
+        document.getElementById('sectionWarning').classList.remove('d-none');
+      } else {
+        document.getElementById('sectionWarning').classList.add('d-none');
+      }
+
+      return false; // Prevent form submission
+    }
+
+    return true; // Allow form submission
+  }
+
+  function saveChanges() {
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+        const name = document.getElementById('name').value;
+            const section = document.getElementById('section').value;
+            document.getElementById('successMessage1').innerText = 'You have successfully registered.';
+            document.getElementById('successMessage').innerText = name + ' | ' + section;
+            document.getElementById('successCard').classList.remove('d-none');
+            document.getElementById('welcomeCard').classList.add('d-none');
+            $('#registerModal').modal('hide');
+    }
+  }
+</script>
+
+</body>
+</html>

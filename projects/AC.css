@@ -1,0 +1,69 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 90px 1fr;
+    height: 50vh;
+    background-image: url(https://c4.wallpaperflare.com/wallpaper/782/241/217/california-lake-lake-tahoe-wallpaper-preview.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+content{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1/2;
+    grid-template-rows: 100px 200px 20px;
+    border-radius: 20px;
+    border: 2px solid rgb(49, 49, 49);
+    width: 390px;
+    height: 370px;
+    background-color: rgba(251, 247, 247,0.388);
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 5px 15px black;
+}
+
+.center{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    text-align: center;
+    padding: 20px;
+    color: rgb(10, 10, 10);
+}
+
+button {
+    background-color: rgba(251, 247, 247,0.388);
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 5px 15px black;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.inputformname{
+    border-bottom: 1px solid rgb(72, 71, 71);
+    background-color: transparent;
+    padding-bottom: 3px;
+}
+
+#result {     
+    display: none;     
+    font-weight: bold;     
+    margin-top: 10px;     
+    text-align: center; 
+}
+#resultImage {     
+    width: 250px;     
+    margin-top: 35px; 
+}

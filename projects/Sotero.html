@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Record Management</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Add Record</h2>
+        <div class="form-group">
+          <label for="nameInput">Name:</label>
+          <input type="text" class="form-control" id="nameInput">
+        </div>
+        <div class="form-group">
+          <label for="courseInput">Course:</label>
+          <input type="text" class="form-control" id="courseInput">
+        </div>
+        <div class="form-group">
+          <label for="sectionInput">Section:</label>
+          <input type="text" class="form-control" id="sectionInput">
+        </div>
+        <button class="btn btn-primary" id="saveRecord">Save Record</button>
+      </div>
+      <div class="col-md-6">
+        <h2>Records</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Section</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="recordTable">
+            <!-- Records will be added here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      $('#saveRecord').click(function () {
+        var name = $('#nameInput').val();
+        var course = $('#courseInput').val();
+        var section = $('#sectionInput').val();
+        
+        if (name && course && section) {
+          var newRow = '<tr>' +
+            '<td>' + name + '</td>' +
+            '<td>' + course + '</td>' +
+            '<td>' + section + '</td>' +
+            '<td><button class="btn btn-danger deleteRecord">DELETE</button></td>' +
+            '</tr>';
+          
+          $('#recordTable').append(newRow);
+          
+          // Clear input fields after saving record
+          $('#nameInput').val('');
+          $('#courseInput').val('');
+          $('#sectionInput').val('');
+        } else {
+          alert('Please fill in all fields');
+        }
+      });
+
+      // Delete record functionality
+      $(document).on('click', '.deleteRecord', function () {
+        $(this).closest('tr').remove();
+      });
+    });
+  </script>
+</body>
+</html>
